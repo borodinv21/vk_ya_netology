@@ -42,7 +42,7 @@ if __name__ == '__main__':
         image_name = f"{photo['likes']}.jpg"
         logger.info(f'Создаю файл с именем {image_name}')
 
-        file_info = ya_client.get_file_info('Images', image_name)
+        file_info = ya_client.get_file_info('Images/', image_name)
 
         if file_info.json().get('error') == None:
             image_name = f"{photo['likes']}_{photo['date']}.jpg"
@@ -53,7 +53,7 @@ if __name__ == '__main__':
             file.write(response.content)
             logger.info('Записываю файл на локальный компьютер...')
 
-        yandex_response = ya_client.get_yandex_upload_photos_response('Images', image_name)
+        yandex_response = ya_client.get_yandex_upload_photos_response('Images/', image_name)
         logger.info('Получил ссылку на загрузку фотографии в Яндекс Диск...')
 
         with open(image_name, 'rb') as file:
